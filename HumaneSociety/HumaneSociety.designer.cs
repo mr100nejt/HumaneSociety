@@ -25,8 +25,14 @@ namespace HumaneSociety
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="HumaneSociety")]
 	public partial class HumaneSocietyDataContext : System.Data.Linq.DataContext
 	{
-		
-		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
+        private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
+
+        public HumaneSocietyDataContext() :
+                base(global::HumaneSociety.Properties.Settings.Default.HumaneSocietyConnectionString, mappingSource)
+        {
+            OnCreated();
+        }
+
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
