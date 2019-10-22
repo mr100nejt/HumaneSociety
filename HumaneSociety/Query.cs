@@ -200,53 +200,66 @@ namespace HumaneSociety
 
         }
 
-        internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates) ///EnterSearchCriteria<int, string> searchparameters
+        internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
-           Animal animalOne = GetAnimalByID(animalId);
-
-            
-            foreach(KeyValuePair<int,string> item in updates)
+            Animal foundAnimal = GetAnimalByID(animalId);
+            if (updates.ContainsKey(1))
             {
-                switch(item.Key)
-                {
-                    case 1:
-                        animalOne.Category.Name = item.Value;
-                        break;
-                    case 2:
-                        animalOne.Name = item.Value;
-                        break;
-                    case 3:
-                        animalOne.Age = int.Parse(item.Value);
-                        break;
-                    case 4:
-                        animalOne.Demeanor = item.Value;
-                        break;
-                    case 5:
-
-                        animalOne.KidFriendly = item.Value;
-                        //create if statement for true or false and return 0 or 1 and set;
-                        
-                        break;
-                    case 6:
-                        animalOne.PetFriendly = item.Value; 
-                        
-                        break;
-                    case 7:
-                       animalOne.Weight = int.Parse(item.Value);
-                        break;
-                    case 8:
-                        animalOne.AnimalId = int.Parse(item.Value); 
-                        break;
-
-
-
-
-                }
-
+                foundAnimal.Category = db.Categories.Where(c => c.Name == updates[1]).FirstOrDefault();
             }
-            db.Animals.Where(e => e.AnimalId == animalId).Select(e => e == animalOne );
-
-
+            if (updates.ContainsKey(2))
+            {
+                foundAnimal.Name = updates[2];
+            }
+            if (updates.ContainsKey(3))
+            {
+                try
+                {
+                    foundAnimal.Age = Convert.ToInt32(updates[3]);
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input, ignoring Age input.");
+                }
+            }
+            if (updates.ContainsKey(4))
+            {
+                foundAnimal.Demeanor = updates[4];
+            }
+            if (updates.ContainsKey(5))
+            {
+                try
+                {
+                    foundAnimal.KidFriendly = Convert.ToBoolean(updates[5]);
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input, ignoring Kid Friendly input.");
+                }
+            }
+            if (updates.ContainsKey(6))
+            {
+                try
+                {
+                    foundAnimal.PetFriendly = Convert.ToBoolean(updates[6]);
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input, ignoring Pet Friendly input.");
+                }
+            }
+            if (updates.ContainsKey(7))
+            {
+                try
+                {
+                    foundAnimal.Weight = Convert.ToInt32(updates[7]);
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input, ignoring Weight input.");
+                }
+            }
+            db.SubmitChanges();
         }
 
         internal static void RemoveAnimal(Animal animal)
