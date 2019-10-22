@@ -200,9 +200,53 @@ namespace HumaneSociety
 
         }
 
-        internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
-        {            
-            throw new NotImplementedException();
+        internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates) ///EnterSearchCriteria<int, string> searchparameters
+        {
+           Animal animalOne = GetAnimalByID(animalId);
+
+            
+            foreach(KeyValuePair<int,string> item in updates)
+            {
+                switch(item.Key)
+                {
+                    case 1:
+                        animalOne.Category.Name = item.Value;
+                        break;
+                    case 2:
+                        animalOne.Name = item.Value;
+                        break;
+                    case 3:
+                        animalOne.Age = int.Parse(item.Value);
+                        break;
+                    case 4:
+                        animalOne.Demeanor = item.Value;
+                        break;
+                    case 5:
+
+                        animalOne.KidFriendly = item.Value;
+                        //create if statement for true or false and return 0 or 1 and set;
+                        
+                        break;
+                    case 6:
+                        animalOne.PetFriendly = item.Value; 
+                        
+                        break;
+                    case 7:
+                       animalOne.Weight = int.Parse(item.Value);
+                        break;
+                    case 8:
+                        animalOne.AnimalId = int.Parse(item.Value); 
+                        break;
+
+
+
+
+                }
+
+            }
+            db.Animals.Where(e => e.AnimalId == animalId).Select(e => e == animalOne );
+
+
         }
 
         internal static void RemoveAnimal(Animal animal)
