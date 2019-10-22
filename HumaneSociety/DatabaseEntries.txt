@@ -1,0 +1,60 @@
+﻿1. Create Five Animal Categories
+CREATE TABLE Categories (CategoryId INTEGER IDENTITY (1,1) PRIMARY KEY, Name VARCHAR(50));
+INSERT INTO Categories Values ('Dogs')
+INSERT INTO Categories Values ('Cats')
+INSERT INTO Categories Values ('Parrots')
+INSERT INTO Categories Values ('Chickens')
+INSERT INTO Categories Values ('Hamsters')
+
+2. Create DietPlans
+CREATE TABLE DietPlans(DietPlanId INTEGER IDENTITY (1,1) PRIMARY KEY, Name VARCHAR(50), FoodType VARCHAR(50), FoodAmountInCups INTEGER);
+INSERT INTO DietPLans Values ('Morbidly Obese', 'Low Calorie', 2)
+INSERT INTO DietPlans Values ('OverWeight', 'Reduced Calorie', 3)
+INSERT INTO DietPlans Values ('Average', 'Normal Calorie', 4)
+INSERT INTO DietPlans Values ('UnderWeight', 'Increased Calorie', 5)
+INSERT INTO DietPlans Values ('Malnourished', 'Whopper', 6)
+
+3. Create Employees
+CREATE TABLE Employees (EmployeeId INTEGER IDENTITY (1,1) PRIMARY KEY, FirstName VARCHAR(50), LastName VARCHAR(50), UserName VARCHAR(50), Password VARCHAR(50), EmployeeNumber INTEGER, Email VARCHAR(50));
+INSERT INTO Employees Values ('Dale', 'MillerLite', 'BigDirtyDale', 'Password123', 69, 'DMillerLite@gmail.com')
+INSERT INTO Employees Values ('Jeff', 'Johnson', 'JJohnson', 'BigJohnson2019', 22, 'JJohnson@gmail.com')
+INSERT INTO Employees Values ('Bud', 'Lite', 'WaterBeer', 'Notyourbuddyguy1990', 47, 'BLite@gmail.com')
+INSERT INTO Employees Values ('Randy', 'Keystone', 'IsThisBeer?', 'HighSchoolRegrets2009', 33, 'RKeystone@gmail.com')
+INSERT INTO Employees Values ('Richard', 'Little', 'SizeDontMatter', 'NotMyFaultItsCold', 55, 'RLittle@gmail.com')
+
+4. Create Animals 
+INSERT INTO Animals Values ('name', 'weight int', 'age int', 'demeanor', 'kid friendly 1/0', 'Pet Friendly 1/0', 'Gender', 'Adoption Status', 'Categories int', 'DietPlanID int', 'EmployeeID INT')
+INSERT INTO Animals Values ('Carl', 50, 5, 'Friendly', 1, 0, 'Male', 'Not Adopted', 1, 1, 1)
+INSERT INTO Animals Values ('Richter', 3, 28, 'Aggressive', 0, 0, 'Male', 'Not Adopted', 3, 2, 2)
+INSERT INTO Animals Values ('Brezhnev', 7, 6, 'Aggressive', 0, 0, 'Male', 'Not Adopted', 2, 3, 3)
+INSERT INTO Animals Values ('Xerxes', 12, 4, 'Passive', 1, 1, 'Male', 'Not Adopted', 4, 4, 4)
+INSERT INTO Animals Values ('Biggie Smalls', 1, 1, 'Friendly', 1, 1, 'Female', 'Not Adopted', 5, 1, 5)
+
+5. Create Addresses
+CREATE TABLE Addresses (AddressId INTEGER IDENTITY (1,1) PRIMARY KEY, AddressLine1 VARCHAR(50), City VARCHAR(50), USStateId INTEGER FOREIGN KEY REFERENCES USStates(USStateId),  Zipcode INTEGER);
+INSERT INTO Addresses Values ('3331 Chester Lane', 'Milwaukee', 49, 53211)
+INSERT INTO Addresses Values ('1212 WhiteTrash Court', 'Orlando', 9, 33934)
+INSERT INTO Addresses Values ('4532 Juneau Avenue', 'Milwaukee', 49, 53211)
+INSERT INTO Addresses Values ('7877 Lawrence Street', 'Kenosha', 49, 55322)
+INSERT INTO Addresses Values ('4433 Brandy Blvd', 'Racine', 49, 55221)
+
+6. Create Clients
+CREATE TABLE Clients (ClientId INTEGER IDENTITY (1,1) PRIMARY KEY, FirstName VARCHAR(50), LastName VARCHAR(50), UserName VARCHAR(50), Password VARCHAR(50), AddressId INTEGER FOREIGN KEY REFERENCES Addresses(AddressId), Email VARCHAR(50));
+INSERT INTO Clients Values ('Kenny', 'Gee', 'NotKennyG', 'CountryMusicBlows', 1, 'kgee@yahoo.com')
+INSERT INTO Clients Values ('Kyle', 'Gauss', 'TenaciousDee', 'PickOfDestiny', 2, 'kgauss@gmail.com')
+INSERT INTO Clients Values ('Jack', 'Black', 'TanaciousLee', 'RockStar', 3, 'jblack@gmail.com')
+INSERT INTO Clients Values ('Leeroy', 'Jenkins', 'BestTeammate', 'Chicken', 4, 'ljenkins@yahoo.com')
+INSERT INTO Clients Values ('Chris', 'Hansen', 'TakeASeat', 'DateLine', 5, 'chansen@gmail.com')
+
+7. Create Rooms
+CREATE TABLE Rooms (RoomId INTEGER IDENTITY (1,1) PRIMARY KEY, RoomNumber INTEGER, AnimalId INTEGER FOREIGN KEY REFERENCES Animals(AnimalId));
+INSERT INTO Rooms Values (1, 16)
+INSERT INTO Rooms Values (2, 17)
+INSERT INTO Rooms Values (3, 18)
+INSERT INTO Rooms Values (4, 19)
+INSERT INTO Rooms Values (5, 20)
+INSERT INTO Rooms Values (6, null)
+INSERT INTO Rooms Values (7, null)
+INSERT Into Rooms Values (8, null)
+INSERT INTO Rooms Values (9, null)
+INSERT INTO Rooms Values (10, null)
