@@ -219,7 +219,7 @@ namespace HumaneSociety
                 }
                 catch
                 {
-                    Console.WriteLine("Invalid input, ignoring Age input.");
+                    Console.WriteLine("Invalid Age Detected");
                 }
             }
             if (updates.ContainsKey(4))
@@ -234,7 +234,7 @@ namespace HumaneSociety
                 }
                 catch
                 {
-                    Console.WriteLine("Invalid input, ignoring Kid Friendly input.");
+                    Console.WriteLine("Invalid value detected, Kid Friendly");
                 }
             }
             if (updates.ContainsKey(6))
@@ -245,7 +245,7 @@ namespace HumaneSociety
                 }
                 catch
                 {
-                    Console.WriteLine("Invalid input, ignoring Pet Friendly input.");
+                    Console.WriteLine("Invalid value detected, Pet Friendly");
                 }
             }
             if (updates.ContainsKey(7))
@@ -256,7 +256,7 @@ namespace HumaneSociety
                 }
                 catch
                 {
-                    Console.WriteLine("Invalid input, ignoring Weight input.");
+                    Console.WriteLine("Invalid Weight Detected");
                 }
             }
             db.SubmitChanges();
@@ -290,7 +290,7 @@ namespace HumaneSociety
                 }
                 catch
                 {
-                    Console.WriteLine("Invalid input, ignoring Age input.");
+                    Console.WriteLine("Input Invalid");
                 }
             }
             if (updates.ContainsKey(4))
@@ -305,7 +305,7 @@ namespace HumaneSociety
                 }
                 catch
                 {
-                    Console.WriteLine("Invalid input, ignoring Kid Friendly input.");
+                    Console.WriteLine("Input Invalid");
                 }
             }
             if (updates.ContainsKey(6))
@@ -316,7 +316,7 @@ namespace HumaneSociety
                 }
                 catch
                 {
-                    Console.WriteLine("Invalid input, ignoring Pet Friendly input.");
+                    Console.WriteLine("Input Invalid");
                 }
             }
             if  (updates.ContainsKey(7))
@@ -327,7 +327,7 @@ namespace HumaneSociety
                 }
                 catch
                 {
-                    Console.WriteLine("Invalid input, ignoring Weight input.");
+                    Console.WriteLine("Input Invalid");
                 }
             }
             return null; 
