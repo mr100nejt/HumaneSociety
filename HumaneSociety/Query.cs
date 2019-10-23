@@ -383,7 +383,17 @@ namespace HumaneSociety
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
-            throw new NotImplementedException();
+            var adoption = db.Adoptions.Where(a => a.AnimalId == animalId).Where(a => a.ClientId == clientId).FirstOrDefault();
+            try
+            {
+                db.Adoptions.DeleteOnSubmit(adoption);
+            }
+            catch
+            {
+                Console.WriteLine("Unable to process your Request.");
+            }
+
+            db.SubmitChanges();
         }
 
         // TODO: Shots Stuff
