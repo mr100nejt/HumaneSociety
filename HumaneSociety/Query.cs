@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace HumaneSociety
 {
     public static class Query
-    {        
+    {
+        public static  int primaryAddoptionId = 0; 
         static HumaneSocietyDataContext db;
 
         static Query()
@@ -357,7 +358,17 @@ namespace HumaneSociety
         // TODO: Adoption CRUD Operations
         internal static void Adopt(Animal animal, Client client)
         {
-            throw new NotImplementedException();
+            int animalId = db.Animals.Where(e => e.AnimalId == animal.AnimalId).Select(e => e.AnimalId).FirstOrDefault();
+            int clientId = db.Clients.Where(e => e.ClientId == client.ClientId).Select(e => e.ClientId).FirstOrDefault();
+            Adoption newAdoption = new Adoption
+            {
+                ClientId = clientId,
+                AnimalId = animalId,
+                AdoptionFee = 5
+             
+            };
+            db.Adoptions.InsertOnSubmit(newAdoption);
+            
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
