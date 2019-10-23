@@ -346,12 +346,12 @@ namespace HumaneSociety
         
         internal static Room GetRoom(int animalId)
         {
-            throw new NotImplementedException();
+           return db.Rooms.Where(e => e.AnimalId == animalId).FirstOrDefault(); 
         }
         
         internal static int GetDietPlanId(string dietPlanName)
         {
-            throw new NotImplementedException();
+           return db.DietPlans.Where(e => e.Name == dietPlanName).Select(e => e.DietPlanId).FirstOrDefault();
         }
 
         // TODO: Adoption CRUD Operations
