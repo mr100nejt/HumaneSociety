@@ -368,17 +368,21 @@ namespace HumaneSociety
              
             };
             db.Adoptions.InsertOnSubmit(newAdoption);
-            
+            db.SubmitChanges();
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
         {
-            throw new NotImplementedException();
+            return db.Adoptions.Where(e => e.ApprovalStatus == null);
         }
 
         internal static void UpdateAdoption(bool isAdopted, Adoption adoption)
         {
-            throw new NotImplementedException();
+            if(isAdopted == true)
+            {
+              Adoption adoptionToUpdate =  db.Adoptions.Where(e => e == adoption).FirstOrDefault();
+              adoptionToUpdate.ApprovalStatus = "Adopted";
+            }
         }
 
         internal static void RemoveAdoption(int animalId, int clientId)
