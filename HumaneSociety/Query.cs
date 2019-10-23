@@ -177,7 +177,9 @@ namespace HumaneSociety
                     employee = db.Employees.Where(e => e.FirstName == employee.FirstName).FirstOrDefault();
                     break;
                 case "update":
-                    db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).Select(e => e == employee);
+                    Employee employee1 = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).FirstOrDefault();
+                    db.Employees.InsertOnSubmit(employee1);
+                    db.SubmitChanges();
                     break;
                 case "delete":
                     var employeeToDelete = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber);
