@@ -273,8 +273,66 @@ namespace HumaneSociety
         // TODO: Animal Multi-Trait Search
         internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
-            throw new NotImplementedException();
+         
+            if (updates.ContainsKey(1))
+            {
+                return db.Animals.Where(c => c.Category.Name == updates[1]);
+            }
+            if (updates.ContainsKey(2))
+            {
+                return db.Animals.Where(c => c.Name == updates[2]);
+            }
+            if (updates.ContainsKey(3))
+            {
+                try
+                {
+                  return  db.Animals.Where(e => e.Age == Convert.ToInt32(updates[3]));
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input, ignoring Age input.");
+                }
+            }
+            if (updates.ContainsKey(4))
+            {
+              return  db.Animals.Where(e => e.Demeanor == updates[4]);
+            }
+            if (updates.ContainsKey(5))
+            {
+                try
+                {
+                   return db.Animals.Where(e => e.KidFriendly == Convert.ToBoolean(updates[5]));
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input, ignoring Kid Friendly input.");
+                }
+            }
+            if (updates.ContainsKey(6))
+            {
+                try
+                {
+                    return  db.Animals.Where(e => e.PetFriendly == Convert.ToBoolean(updates[6]));
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input, ignoring Pet Friendly input.");
+                }
+            }
+            if  (updates.ContainsKey(7))
+            {
+                try
+                {
+                  return db.Animals.Where(e => e.Weight == Convert.ToInt32(updates[7]));
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input, ignoring Weight input.");
+                }
+            }
+            return null; 
         }
+    
          
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
